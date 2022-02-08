@@ -21,14 +21,14 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github,actor }}
+          username: ${{ github.actor }}
           password: ${{ secrets.auth_token }}
 
-      - name: Build and push image 
+      - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ghcr.io/devel0ne/09_docker_image:latest 
+          tags: ghcr.io/devel0ne/09_docker_image:latest
 
 
