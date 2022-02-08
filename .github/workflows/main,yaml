@@ -1,0 +1,28 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Build Docker Image
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Hello world action step
+        uses: actions/checkout@v2
+
+      - name: Login to container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github,actor }}
+          password: ${{ secrets.auth_token }}
+
+      - name: Build and push image 
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/devel0ne/09_docker_image:latest 
+
+
