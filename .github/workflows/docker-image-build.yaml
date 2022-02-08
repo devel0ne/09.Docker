@@ -14,7 +14,7 @@ jobs:
       packages: write
       contents: read
     steps:
-      - name: Hello world action step
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Login to container registry
